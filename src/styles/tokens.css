@@ -1,4 +1,6 @@
 :root {
+  color-scheme: dark;
+
   /* color */
   --bg: #0a0d10;
   --bg-raised: #0e1318;
