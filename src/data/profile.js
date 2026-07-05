@@ -107,6 +107,22 @@ export const education = [
   },
 ]
 
+// tokens floating in the hero's vector-space constellation
+export const fieldTokens = [
+  'react',
+  'node.js',
+  'express',
+  'mongodb',
+  'postgres',
+  'pgvector',
+  'embeddings',
+  'vector search',
+  'rag',
+  'llm',
+  'rest api',
+  'socket.io',
+]
+
 export const pipeline = {
   nodes: ['docs', 'chunk', 'embed', 'vector db', 'llm', 'answer'],
   caption: 'fig. 01 — retrieval-augmented generation, the loop I keep coming back to',

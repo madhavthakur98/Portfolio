@@ -14,9 +14,17 @@
   inset: 0;
   background-image: radial-gradient(var(--line-bright) 1px, transparent 1px);
   background-size: 28px 28px;
-  opacity: 0.35;
+  opacity: 0.22;
   -webkit-mask-image: radial-gradient(ellipse 75% 65% at 35% 40%, black, transparent 72%);
   mask-image: radial-gradient(ellipse 75% 65% at 35% 40%, black, transparent 72%);
+  pointer-events: none;
+}
+
+/* vector-space constellation canvas */
+.vector-field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   pointer-events: none;
 }
 

@@ -1,14 +1,22 @@
 import { profile } from '../data/profile.js'
 import useTyped from '../hooks/useTyped.js'
+import useScramble from '../hooks/useScramble.js'
+import useMagnetic from '../hooks/useMagnetic.js'
 import Pipeline from './Pipeline.jsx'
+import VectorField from './VectorField.jsx'
 import './Hero.css'
 
 export default function Hero() {
   const { typed, done } = useTyped('whoami')
+  const name = useScramble(profile.name, { startDelay: 1000, duration: 1100 })
   const [headStart, headAccent, headEnd] = profile.headline
+  const resumeRef = useMagnetic()
+  const linkedinRef = useMagnetic()
+  const githubRef = useMagnetic()
 
   return (
     <section className="hero" id="top">
+      <VectorField />
       <div className="hero-inner container">
         <p className="hero-prompt mono">
           <span className="hero-prompt-symbol">$&nbsp;</span>
@@ -16,8 +24,8 @@ export default function Hero() {
           <span className={`hero-cursor${done ? ' hero-cursor--blink' : ''}`} aria-hidden="true" />
         </p>
 
-        <h1 className="hero-name hero-rise" style={{ '--d': '0.9s' }}>
-          {profile.name}
+        <h1 className="hero-name hero-rise" style={{ '--d': '0.9s' }} aria-label={profile.name}>
+          <span aria-hidden="true">{name}</span>
         </h1>
 
         <p className="hero-headline hero-rise" style={{ '--d': '1.05s' }}>
@@ -34,10 +42,11 @@ export default function Hero() {
         </p>
 
         <div className="hero-cta-row hero-rise" style={{ '--d': '1.5s' }}>
-          <a href={profile.resume} download className="btn btn--primary mono">
+          <a ref={resumeRef} href={profile.resume} download className="btn btn--primary mono">
             download résumé ↓
           </a>
           <a
+            ref={linkedinRef}
             href={profile.links.linkedin}
             target="_blank"
             rel="noreferrer"
@@ -46,6 +55,7 @@ export default function Hero() {
             linkedin ↗
           </a>
           <a
+            ref={githubRef}
             href={profile.links.github}
             target="_blank"
             rel="noreferrer"

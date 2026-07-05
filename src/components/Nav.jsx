@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { profile } from '../data/profile.js'
 import './Nav.css'
 
@@ -11,16 +11,32 @@ const LINKS = [
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
+  const progressRef = useRef(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    let raf = 0
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24)
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => {
+        const max = document.documentElement.scrollHeight - window.innerHeight
+        const progress = max > 0 ? window.scrollY / max : 0
+        if (progressRef.current) {
+          progressRef.current.style.transform = `scaleX(${progress})`
+        }
+      })
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   return (
     <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`}>
+      <div ref={progressRef} className="nav-progress" aria-hidden="true" />
       <div className="nav-inner container">
         <a href="#top" className="nav-logo mono">
           {profile.handle}

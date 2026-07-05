@@ -10,6 +10,18 @@
     border-color 0.3s ease;
 }
 
+.nav-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0.85;
+}
+
 .nav--scrolled {
   background: rgba(10, 13, 16, 0.82);
   backdrop-filter: blur(12px);
