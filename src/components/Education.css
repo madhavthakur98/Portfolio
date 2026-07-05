@@ -1,0 +1,41 @@
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.edu-item {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-raised);
+  padding: 26px 28px;
+  transition: border-color 0.25s ease;
+}
+
+.edu-item:hover {
+  border-color: var(--accent-dim);
+}
+
+.edu-degree {
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+
+.edu-school {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.edu-location {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+
+@media (max-width: 720px) {
+  .edu-grid {
+    grid-template-columns: 1fr;
+  }
+}
