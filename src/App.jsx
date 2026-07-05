@@ -4,6 +4,7 @@ import About from './components/About.jsx'
 import Experience from './components/Experience.jsx'
 import Projects from './components/Projects.jsx'
 import Education from './components/Education.jsx'
+import Terminal from './components/Terminal.jsx'
 import Footer from './components/Footer.jsx'
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
         <Experience />
         <Projects />
         <Education />
+        <Terminal />
       </main>
       <Footer />
     </>
